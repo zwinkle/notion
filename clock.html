@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+    <title>Clock 24H</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .clock {
+            font-family: 'Bree Serif', serif;
+            font-size: 2rem;
+            color: #664229;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .time {
+            min-width: 30px;
+        }
+
+        .colon {
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <div class="time" id="hour"></div>
+        <div class="colon">:</div>
+        <div class="time" id="min"></div>
+        <div class="colon">:</div>
+        <div class="time" id="sec"></div>
+    </div>
+
+    <script>
+        function zeros(num) {
+            if (num < 10) {
+                num = '0' + num;
+            }
+            return num;
+        }
+
+        function updateClock() {
+            const today = new Date();
+            const hour = zeros(today.getHours());
+            const minutes = zeros(today.getMinutes());
+            const seconds = zeros(today.getSeconds());
+            
+            document.getElementById('hour').innerHTML = hour;
+            document.getElementById('min').innerHTML = minutes;
+            document.getElementById('sec').innerHTML = seconds;
+        }
+
+        updateClock();
+        setInterval(updateClock, 500);
+    </script>
+</body>
+</html>

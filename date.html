@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
-    <title>Greeting</title>
+    <title>Date</title>
     <style>
         body {
             margin: 0;
@@ -16,7 +16,7 @@
             min-height: 100vh;
         }
 
-        .greet {
+        .date {
             font-family: 'Bree Serif', serif;
             font-size: 2rem;
             color: #664229;
@@ -25,28 +25,21 @@
     </style>
 </head>
 <body>
-    <div class="greet" id="greet"></div>
+    <div class="date" id="date"></div>
 
     <script>
-        function updateGreeting() {
+        function updateDate() {
             const today = new Date();
-            const hrs = today.getHours();
-            let greet = '';
+            const day = String(today.getDate()).padStart(2, '0');
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const year = today.getFullYear();
             
-            if (hrs < 12) {
-                greet = 'Good Morning Annisa';
-            } else if (hrs >= 12 && hrs < 17) {
-                greet = 'Good Afternoon Annisa';
-            } else {
-                greet = 'Good Evening Annisa';
-            }
-            
-            document.getElementById('greet').innerHTML = greet;
+            document.getElementById('date').innerHTML = `${day}/${month}/${year}`;
         }
 
-        updateGreeting();
-        // Update setiap menit untuk memastikan greeting tetap akurat
-        setInterval(updateGreeting, 60000);
+        updateDate();
+        // Update setiap menit
+        setInterval(updateDate, 60000);
     </script>
 </body>
 </html>
